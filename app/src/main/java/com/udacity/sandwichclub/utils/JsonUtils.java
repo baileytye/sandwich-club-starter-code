@@ -14,11 +14,11 @@ public class JsonUtils {
     public static Sandwich parseSandwichJson(String json) {
 
         //Variables used for constructing sandwich
-        String mainName = "";
+        String mainName;
         List<String> alsoKnownAs = new ArrayList<>();
-        String placeOfOrigin = "";
-        String description = "";
-        String image = "";
+        String placeOfOrigin;
+        String description;
+        String image;
         List<String> ingredients = new ArrayList<>();
 
         try {
