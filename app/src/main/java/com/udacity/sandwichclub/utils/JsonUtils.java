@@ -7,19 +7,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class JsonUtils {
 
     public static Sandwich parseSandwichJson(String json) {
 
-        String mainName = "test";
-        List<String> alsoKnownAs = Arrays.asList("also1", "also2", "also3");
-        String placeOfOrigin = "Calgary";
-        String description = "This is the description";
-        String image  = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Grilled_ham_and_cheese_014.JPG/800px-Grilled_ham_and_cheese_014.JPG";
-        List<String> ingredients = Arrays.asList("ing1", "ing2", "ing3");
+        //Variables used for constructing sandwich
+        String mainName = "";
+        List<String> alsoKnownAs = new ArrayList<>();
+        String placeOfOrigin = "";
+        String description = "";
+        String image = "";
+        List<String> ingredients = new ArrayList<>();
 
         try {
             JSONObject JSONSandwichObject = new JSONObject(json);
@@ -31,7 +31,6 @@ public class JsonUtils {
             //Get other names
             JSONArray JSONAlsoKnownAs = JSONName.getJSONArray("alsoKnownAs");
             if(JSONAlsoKnownAs != null){
-                alsoKnownAs = new ArrayList<>();
                 int length = JSONAlsoKnownAs.length();
                 for(int i = 0; i < length; i++)
                     alsoKnownAs.add(JSONAlsoKnownAs.getString(i));
@@ -50,7 +49,6 @@ public class JsonUtils {
             //Get Ingredients
             JSONArray JSONIngredients = JSONSandwichObject.getJSONArray("ingredients");
             if(JSONIngredients != null){
-                ingredients = new ArrayList<>();
                 int length = JSONIngredients.length();
                 for(int i = 0; i < length; i++)
                     ingredients.add(JSONIngredients.getString(i));
@@ -62,9 +60,8 @@ public class JsonUtils {
         }
 
 
-        Sandwich sandwich = new Sandwich(mainName, alsoKnownAs,
+        return new Sandwich(mainName, alsoKnownAs,
                 placeOfOrigin, description, image, ingredients);
 
-        return sandwich;
     }
 }

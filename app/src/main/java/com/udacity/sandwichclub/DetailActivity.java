@@ -74,23 +74,27 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich sandwich) {
 
+        //Set origin
         if(sandwich.getPlaceOfOrigin().equals("")){
-            mPlaceOfOriginTextView.setText("Unknown");
+            mPlaceOfOriginTextView.setText(R.string.unknown_origin);
         } else {
             mPlaceOfOriginTextView.setText(sandwich.getPlaceOfOrigin());
         }
         mDescriptionTextView.setText(sandwich.getDescription());
 
+        //Set ingredients
         mIngredientsTextView.setText("");
         for(String s: sandwich.getIngredients()){
             mIngredientsTextView.append(s + "\n");
         }
 
+        //Set also known as
         mAlsoKnownAsTextView.setText("");
         List<String> alsoKnownAs = sandwich.getAlsoKnownAs();
 
+        //Set also known as list
         if(alsoKnownAs.isEmpty()) {
-            mAlsoKnownAsTextView.setText("No other common names");
+            mAlsoKnownAsTextView.setText(R.string.empty_AKA);
         } else {
             for (String s : alsoKnownAs) {
                 mAlsoKnownAsTextView.append(s);
