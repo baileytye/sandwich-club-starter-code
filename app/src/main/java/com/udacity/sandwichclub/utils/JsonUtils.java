@@ -30,9 +30,9 @@ public class JsonUtils {
 
             //Get other names
             JSONArray JSONAlsoKnownAs = JSONName.getJSONArray("alsoKnownAs");
-            if(JSONAlsoKnownAs != null){
+            if (JSONAlsoKnownAs != null) {
                 int length = JSONAlsoKnownAs.length();
-                for(int i = 0; i < length; i++)
+                for (int i = 0; i < length; i++)
                     alsoKnownAs.add(JSONAlsoKnownAs.getString(i));
             }
 
@@ -48,20 +48,20 @@ public class JsonUtils {
 
             //Get Ingredients
             JSONArray JSONIngredients = JSONSandwichObject.getJSONArray("ingredients");
-            if(JSONIngredients != null){
+            if (JSONIngredients != null) {
                 int length = JSONIngredients.length();
-                for(int i = 0; i < length; i++)
+                for (int i = 0; i < length; i++)
                     ingredients.add(JSONIngredients.getString(i));
             }
+
+            return new Sandwich(mainName, alsoKnownAs,
+                    placeOfOrigin, description, image, ingredients);
 
 
         } catch (JSONException e) {
             e.printStackTrace();
+            return null;
         }
-
-
-        return new Sandwich(mainName, alsoKnownAs,
-                placeOfOrigin, description, image, ingredients);
 
     }
 }
